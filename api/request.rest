@@ -2,10 +2,12 @@ GET http://localhost:3000/
 
 #####
 
+# LOGIN REQUEST
+
 GET http://localhost:3000/user/login
 Content-Type: application/json
 
 {
-    "username": "user0",
+    "username": "user1",
     "password": "pass0"
 }

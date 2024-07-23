@@ -6,7 +6,6 @@ const app = express();
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const multer = require('multer')
-const { GridFsStorage } = require("multer-gridfs-storage")
 const upload = multer( {storage: multer.memoryStorage()})
 
 app.use(express.json())
@@ -46,11 +45,12 @@ const User = mongoose.model('User', userSchema)
 app.post('/user/new', upload.single('profilePicture') , async (req, res) => {
     try {
 
-        const existingUser = User.findOne( {username: req.body.username} )
+        const existingUser = await User.findOne( {username: req.body.username} )
+
         if(existingUser){
             res.send(JSON.stringify('Username already exists'))
+            // res.send(existingUser)
         }
-
         const hash  = await bcrypt.hash(req.body.password, 10)
 
         const user = new User({
@@ -66,10 +66,9 @@ app.post('/user/new', upload.single('profilePicture') , async (req, res) => {
         res.send(user)
 
         console.log(`User ${req.body.username} sent to database`)
-        
     } catch (error) {
         res.status(500)
-        res.send(error)
+        res.send(error.message)
     }
 })
 
@@ -81,19 +80,16 @@ app.get('/user/login', async (req, res) => {
             const isCorrect = await bcrypt.compare(req.body.password, user.password)
 
             if(isCorrect){
-                res.send(JSON.stringify(user))
+                res.send(JSON.stringify('logged in successfully'))
             }else{
                 res.send(JSON.stringify('unauthorized'))
             }
 
         }else{
-
             res.send(JSON.stringify('user does not exist'))
-
         }
     }catch (error){
-        res.send(error)
+        res.send(error.message)
     }
-
 })
 
