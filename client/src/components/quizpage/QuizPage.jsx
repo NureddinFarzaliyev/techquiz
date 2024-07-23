@@ -5,19 +5,8 @@ import QuizContainer from './QuizContainer';
 function QuizPage({}) {
     const API_KEY = import.meta.env.VITE_QUIZ_API_KEY
     const [data, setData] = useState(null);
-    const [url, setUrl] = useState();
     const {name, difficulty} = useParams();
 
-
-    // const declareURL = () => {
-    //     if(name == "General"){
-    //         setUrl(`https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&difficulty=${difficulty}&limit=10`)
-    //     }else if(name == "Code"){
-    //         setUrl(`https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&category=${name}&difficulty=${difficulty}&limit=10`)
-    //     }else{
-    //         setUrl(`https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&tags=${name}&difficulty=${difficulty}&limit=10`)
-    //     }
-    // }
 
     useEffect(() => {
 
@@ -53,23 +42,13 @@ function QuizPage({}) {
 
     }, [])
 
-
-    // useEffect(() => {
-    //     try {
-    //         fetch(url).then(response => response.json()).then(data => setData(data))
-    //         console.log('data fetched for', url)
-    //     } catch (error) {
-    //         throw new error
-    //     }
-    // }, [url])
-
     return (
         <>
             <div>{name}</div>
             <div>{difficulty}</div>
 
 
-            <QuizContainer data={data}/>
+            <QuizContainer data={data} difficulty={difficulty}/>
 
         </>
     )

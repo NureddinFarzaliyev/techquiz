@@ -1,0 +1,15 @@
+
+@keyframes falseAnim {
+    0%{
+        background-color: white;
+    }
+    50%{
+        background-color: red;
+    }100%{
+        background-color: white;
+    }
+}
+
+.false-anim{
+    animation: falseAnim .5s;
+}

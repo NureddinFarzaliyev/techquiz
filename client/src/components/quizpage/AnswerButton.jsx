@@ -1,17 +1,18 @@
 import React from 'react'
+import './quizpage.css'
 
-function AnswerButton( { text, isCorrect, onCorrect } ) {
+function AnswerButton( { text, isCorrect, onCorrect, onFalse, btnState } ) {
 
-    const handleButtonClick = () => {
+    const handleButtonClick = (e) => {
         if(isCorrect === "true"){
-            onCorrect();
+            onCorrect( e.target );
         }else{
-            console.log('Wrong Answer')
+            onFalse( e.target );
         }
     }
 
   return (
-    <button className='border-solid border-2 border-red-400' onClick={handleButtonClick}>
+    <button  disabled={btnState} className='border-solid border-2 border-red-400' onClick={(e) => {handleButtonClick(e)}}>
         {text}
     </button>
   )
