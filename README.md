@@ -8,8 +8,8 @@
 ****
 
 ### I've used:
-- React.js on client side
-- Tailwindcss to style
-- "quizapi.io" API to fetch questions 
-- MongoDB as a database
-- Node.js / Express to write REST API to communicate with database and User authentication 
+- **React.js** on client side
+- **Tailwindcss** to style
+- "**quizapi.io**" **API** to fetch questions 
+- **MongoDB** as a database
+- **Node.js** / **Express** to write REST API to communicate with database and User authentication 
