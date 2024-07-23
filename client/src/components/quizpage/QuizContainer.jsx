@@ -34,6 +34,16 @@ function QuizContainer({data, difficulty}) {
       } )
     }
 
+    const extraPoints = (earnedPoints) => {
+      if(difficulty === "Easy" && earnedPoints == 50){
+        return 20
+      }else if(difficulty === "Medium" && earnedPoints == 100){
+        return 50
+      }else if(difficulty === "Hard" && earnedPoints == 200){
+        return 100
+      }return 0
+    }
+
     // Make other buttons unuseable when animations are going
 
     const handleCorrectAnswer = ( button ) => {
@@ -67,10 +77,10 @@ function QuizContainer({data, difficulty}) {
         if(questionData && questionData[currentQuestion]){
             return <QuestionCard btnState={btnDisabled} question={questionData[currentQuestion]} onFalse={handleFalseAnswer} onCorrect={handleCorrectAnswer} />
         }else if(currentQuestion == 10){
-          console.log('questions ended')
 
-          // ! ADD EARNED POINTS TO USER DATABASE
+          // ! ADD earnedPoints + extraPoints(earnedPoints) to DATABASE
 
+          console.log(`You've earned ${earnedPoints}pts (+${extraPoints(earnedPoints)}pts extra)`)
         }else{
           console.log('not loaded yet')
         }
@@ -80,7 +90,7 @@ function QuizContainer({data, difficulty}) {
     <div>
       <div>{setQuestions()}</div>
       <div>
-        <span>Earned Points: {earnedPoints}</span>
+        <span>Earned Points: {earnedPoints + extraPoints(earnedPoints)}</span>
       </div>
     </div>
   )
