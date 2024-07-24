@@ -1,10 +1,11 @@
 import React from 'react';
 import QuizzesContainer from './quizzes/QuizzesContainer.jsx'
+import Header from './Header.jsx';
 
 function Container() {
   return (
     <>
-        <div>Container</div>
+        <Header />
         <QuizzesContainer />
     </>
   )

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import QuizContainer from './QuizContainer';
+import QuizHeader from './QuizHeader';
 
 function QuizPage({}) {
     const API_KEY = import.meta.env.VITE_QUIZ_API_KEY
     const [data, setData] = useState(null);
     const {name, difficulty} = useParams();
-
 
     useEffect(() => {
 
@@ -44,11 +44,15 @@ function QuizPage({}) {
 
     return (
         <>
+        <QuizHeader />
+
+        <div>
             <div>{name}</div>
             <div>{difficulty}</div>
+        </div>
 
 
-            <QuizContainer data={data} difficulty={difficulty}/>
+        <QuizContainer data={data} difficulty={difficulty}/>
 
         </>
     )
