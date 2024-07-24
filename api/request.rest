@@ -3,11 +3,11 @@ GET http://localhost:3000/
 #####
 
 # ! LOGIN REQUEST
-GET http://localhost:3000/user/login
+POST http://localhost:3000/user/login
 Content-Type: application/json
 
 {
-    "username": "user1",
+    "username": "user0",
     "password": "pass0"
 }
 
@@ -27,17 +27,17 @@ Content-Type: application/json
 ####
 
 # ! GET USER DATA REQUEST
-GET http://localhost:3000/user/66a0b95f7b3b91fa11ce9aad
+GET http://localhost:3000/user/66a10d90d0613d38d8fd6d1d
 Content-Type:  application/json
 
 #####
 
 # ! ADD POINTS TO USER
-PUT http://localhost:3000/user/66a0b95f7b3b91fa11ce9aad
+PUT http://localhost:3000/user/66a10d90d0613d38d8fd6d1d
 Content-Type: application/json
 
 {
-    "points": 20000
+    "points": 200
 }
 
 #####

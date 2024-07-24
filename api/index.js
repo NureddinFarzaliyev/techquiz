@@ -7,8 +7,10 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const multer = require('multer')
 const upload = multer( {storage: multer.memoryStorage()})
+const cors = require('cors')
 
 app.use(express.json())
+app.use(cors())
 
 const port = 3000
 app.listen(port, () => {
@@ -75,21 +77,23 @@ app.post('/user/new', upload.single('profilePicture') , async (req, res) => {
 
 // ! LOGIN NEW USER
 
-app.get('/user/login', async (req, res) => {
+app.post('/user/login', async (req, res) => {
     try{
         const user = await User.findOne( {username: req.body.username} )
+
+        console.log(`TRYING TO LOGIN WITH: ${req.body.username} : ${req.body.password}`)
 
         if(user){
             const isCorrect = await bcrypt.compare(req.body.password, user.password)
 
             if(isCorrect){
-                res.send(JSON.stringify('logged in successfully'))
+                res.send(user._id)
             }else{
                 res.send(JSON.stringify('unauthorized'))
             }
 
         }else{
-            res.send(JSON.stringify('user does not exist'))
+            res.send(JSON.stringify('nouser'))
         }
     }catch (error){
         res.send(error.message)
@@ -103,7 +107,17 @@ app.get( '/user/:id', async (req, res) => {
 
     try{
         const userData = await User.findOne( { _id: req.params.id } )
-        res.send(userData)
+
+        if(!userData){
+            return res.status(404).send('User not found')
+        }
+
+        const userWithBase64Pic = {
+            ...userData.toObject(),
+            profilePicture: userData.profilePicture != null ? userData.profilePicture.toString('base64') : ''
+        };
+
+        res.send(JSON.stringify(userWithBase64Pic))
     }catch(error){
         res.send(error.message)
     }

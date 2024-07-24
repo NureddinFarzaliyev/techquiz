@@ -6,6 +6,7 @@ function QuizContainer({data, difficulty}) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [btnDisabled, setBtnDisabled] = useState(false)
     const [earnedPoints, setEarnedPoints] = useState(0)
+    const userId = localStorage.getItem('userId')
 
 
     useEffect(() => {
@@ -73,25 +74,48 @@ function QuizContainer({data, difficulty}) {
       }, 500);
     }
 
+    const addPoints = (pts) => {
+      fetch(`${import.meta.env.VITE_BASE_URL}/user/${userId}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          "points": pts
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }).then(response => response.json()).then(data => console.log(data))
+    }
+
     const setQuestions = ( ) => {
         if(questionData && questionData[currentQuestion]){
-            return <QuestionCard btnState={btnDisabled} question={questionData[currentQuestion]} onFalse={handleFalseAnswer} onCorrect={handleCorrectAnswer} />
-        }else if(currentQuestion == 10){
 
-          // ! ADD earnedPoints + extraPoints(earnedPoints) to DATABASE
+          return <QuestionCard btnState={btnDisabled} question={questionData[currentQuestion]} onFalse={handleFalseAnswer} onCorrect={handleCorrectAnswer} />
 
-          console.log(`You've earned ${earnedPoints}pts (+${extraPoints(earnedPoints)}pts extra)`)
+        }else if(currentQuestion == 10){ // to end loop when the questions ended
+
+          const totalPoints = earnedPoints + extraPoints(earnedPoints)
+
+          addPoints(totalPoints)
+
+          return(
+            <p className='bg-red-800'> 
+              You've earned {totalPoints} points.
+            </p>          
+          )
+
         }else{
-          console.log('not loaded yet')
+
+          return(
+            <div>Loading...</div>
+          )
+          
         }
     }
 
   return (
     <div>
       <div>{setQuestions()}</div>
-      <div>
-        <span>Earned Points: {earnedPoints + extraPoints(earnedPoints)}</span>
-      </div>
+      <p>{earnedPoints}</p>
     </div>
   )
 }

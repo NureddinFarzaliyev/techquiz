@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 function Header() {
 
     const [userData, setUserData] = useState('')
+    const [imageUrl, setImageUrl] = useState('')
 
     const handleLogOut = () => {
         console.log('Logged out')
@@ -16,17 +17,29 @@ function Header() {
             try{
                 fetch(`${import.meta.env.VITE_BASE_URL}/user/${userId}`)
                 .then(response => response.json())
-                .then(data => setUserData(data))
+                .then(data => handleUserData(data))
             }catch(error){
                 console.log(error)
             }
         }
     }
 
+    const handleUserData = (data) => {
+
+        setUserData(data)
+
+        if(data.profilePicture != ''){
+            const img = `data:image/png;base64,${data.profilePicture}`;
+            setImageUrl(img)
+        }else{
+            setImageUrl('./src/assets/avatar.png')
+        }
+
+    }
+
 
     useEffect(() => {
-        fetchUserData();
-        console.log(userData.profilePicture)
+        fetchUserData()
     }, [])
 
 
@@ -38,6 +51,7 @@ function Header() {
             <div>
                 <h1 className='text-2xl font-bold'>{userData.username}</h1>
                 <p className='text-xl font-semibold'>{userData.points}pts</p>
+                <img src={imageUrl} alt="avatar" className='h-32' />
             </div>
 
             <div>

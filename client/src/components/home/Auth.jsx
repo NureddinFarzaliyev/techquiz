@@ -11,7 +11,7 @@ function Login() {
     const [profilePicture, setProfilePicture] = useState()
     const [registerStatus, setRegisterStatus] = useState()
     
-    const registerUser = (username, password, profilePicture) => {
+    const registerUser = (username, password, profilePicture, e) => {
 
         if(username && password){
             const formData = new FormData()
@@ -34,6 +34,7 @@ function Login() {
                 })
             }catch(error) {
                 console.log(error)
+                setRegisterStatus('Error occured. Please try again.')
             }
         }else{
             setRegisterStatus('Please fill all the blanks')
@@ -41,10 +42,18 @@ function Login() {
 
 
     }
+
+    const isImage = (file) => {
+        return file && file['type'].split('/')[0] === 'image';
+    } 
     
     const handleImageUpload = (e) => {
-        if(e.target.files[0].size > 2097152){
-            alert('file is too big')
+        if(!isImage(e.target.files[0])){
+            setRegisterStatus("File type is not supported")
+            e.target.value = ''
+        }
+        else if(e.target.files[0].size > 1600000){
+            setRegisterStatus('File is too big')
             e.target.value = ''
         }else{
             console.log('image uploaded')
@@ -67,6 +76,7 @@ function Login() {
 
         }catch(error){
             console.log(error)
+            setLoginStatus('Error occured. Please try again.')
         }
     }
 
@@ -92,7 +102,6 @@ function Login() {
                 <h1>register</h1>
                 <input type="text" placeholder='username' onChange={(e) => { setRegisterUsername(e.target.value) }} />
                 <input type="text" placeholder='password' onChange={(e) => { setRegisterPassword(e.target.value) }} />
-                <p>images must be under 2mb</p>
                 <input type="file" accept="image/*" onChange={(e) => { handleImageUpload(e) }} />
                 <button onClick={() => {registerUser( registerUsername, registerPassword, profilePicture )}}>Register</button>
                 <p>{registerStatus}</p>
