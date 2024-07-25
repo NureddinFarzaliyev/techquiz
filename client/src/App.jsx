@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/home/Home';
 import QuizPage from './components/quizpage/QuizPage';
-// import QuizzesContainer from './components/quizzes/QuizzesContainer';
+import Profile from './components/Profile';
 
 function App() {
 
