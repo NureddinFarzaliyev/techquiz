@@ -43,11 +43,11 @@ Content-Type: application/json
 #####
 
 # ! CHANGE USERNAME
-PUT http://localhost:3000/user/username/66a0b95f7b3b91fa11ce9aad
+PUT http://localhost:3000/user/username/66a10d90d0613d38d8fd6d1d
 Content-Type: application/json
 
 {
-    "newUsername": "user0"
+    "newUsername": "nureddin"
 }
 
 #####

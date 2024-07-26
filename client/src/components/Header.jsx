@@ -54,15 +54,15 @@ function Header() {
                 <h1 className='text-2xl font-bold'>{userData.username}</h1>
                 <p className='text-xl font-semibold'>{userData.points}pts</p>
                 <img src={imageUrl} alt="avatar" className='h-32' />
+                <div>
+                    <button onClick={() => {handleLogOut()}}>Log out</button>
+                </div>
             </div>
 
             {/* EXPANDED PROFILE */}
 
             <ExpandedProfile userData={userData} imgUrl={imageUrl} />
 
-            <div>
-                <button onClick={() => {handleLogOut()}}>Log out</button>
-            </div>
         </div>
     )
 }

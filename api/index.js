@@ -147,11 +147,12 @@ app.put('/user/:id', async (req, res) => {
 app.put('/user/username/:id', async (req, res) => {
 
     try{
+        console.log("Username change request came")
         const userData = await User.findOne( {_id: req.params.id} )
-        userData.username = req.body.newUsername
+        userData.username = await req.body.newUsername
         await User.updateOne( {_id: req.params.id }, userData )
     
-        res.send(JSON.stringify(`Username changed to: ${userData.username}`))
+        res.send(JSON.stringify(`Username changed to: ${req.body.newUsername} (${req.params.id})`))
     }catch(error){
         res.send(error.message)
     }

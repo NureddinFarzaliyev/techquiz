@@ -8,14 +8,19 @@ function ExpandedProfile( { userData,  imgUrl}) {
     const changeUsername = () => {
 
 
-        if(newUsername != ''){
+        if(newUsername != '' && newUsername){
+
+            console.log("Username change request sent for", newUsername)
 
             fetch(`${import.meta.env.VITE_BASE_URL}/user/username/${localStorage.getItem("userId")}`, {
                 method: "PUT",
-                body: {
+                body: JSON.stringify({
                     "newUsername": newUsername
+                }),
+                headers: {
+                    "Content-Type": "application/json"
                 }
-            }).then(response => response.json()).then(data => console.log(data))
+            }).then(response => response.json()).then(data => {console.log(data); location.reload()})
 
         }else{
             console.log('please...')
