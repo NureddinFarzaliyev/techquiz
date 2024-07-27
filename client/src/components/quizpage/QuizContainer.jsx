@@ -93,13 +93,11 @@ function QuizContainer({data, difficulty}) {
 
         }else if(currentQuestion == 10){ // to end loop when the questions ended
 
-          const totalPoints = earnedPoints + extraPoints(earnedPoints)
-
-          addPoints(totalPoints)
+          addPoints(earnedPoints + extraPoints(earnedPoints))
 
           return(
             <p className='bg-red-800'> 
-              You've earned {totalPoints} points.
+              You've earned {earnedPoints + extraPoints(earnedPoints)} points.
             </p>          
           )
 

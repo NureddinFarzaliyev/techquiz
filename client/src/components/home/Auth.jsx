@@ -29,6 +29,7 @@ function Login() {
                     method: "POST",
                     body: formData
                 }).then(response => response.json()).then(data => {
+                    setRegisterBtnText('Register')
                     if(typeof data == 'object'){
                         setRegisterStatus('Registered Successfully. Please Login.')
                     }else{

@@ -70,7 +70,6 @@ app.post('/user/new', upload.single('profilePicture') , async (req, res) => {
 
         console.log(`User ${req.body.username} sent to database`)
     } catch (error) {
-        res.status(500)
         res.send(error.message)
     }
 })
