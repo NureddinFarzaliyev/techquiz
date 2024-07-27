@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { useSubmit } from 'react-router-dom';
-
+import { isImage } from '../../Utils';
 
 function Login() {
     const [loginUsername, setLoginUsername] = useState('');
@@ -42,10 +41,6 @@ function Login() {
 
 
     }
-
-    const isImage = (file) => {
-        return file && file['type'].split('/')[0] === 'image';
-    } 
     
     const handleImageUpload = (e) => {
         if(!isImage(e.target.files[0])){
