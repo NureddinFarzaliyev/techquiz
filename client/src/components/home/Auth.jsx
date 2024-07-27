@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import { isImage } from '../../Utils';
 
 function Login() {
+    const [loginBtnText, setLoginBtnText] = useState('Login')
     const [loginUsername, setLoginUsername] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [loginStatus, setLoginStatus] = useState('')
+
+    const [registerBtnText, setRegisterBtnText] = useState('Register')
     const [registerUsername, setRegisterUsername] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
     const [profilePicture, setProfilePicture] = useState()
-    const [registerStatus, setRegisterStatus] = useState()
+    const [registerStatus, setRegisterStatus] = useState('')
     
-    const registerUser = (username, password, profilePicture, e) => {
+    const registerUser = (username, password, profilePicture) => {
 
         if(username && password){
             const formData = new FormData()
@@ -21,6 +24,7 @@ function Login() {
             formData.append("profilePicture", profilePicture)
     
             try{
+                setRegisterBtnText('Loading...')
                 fetch(`${import.meta.env.VITE_BASE_URL}/user/new`, {
                     method: "POST",
                     body: formData
@@ -32,10 +36,12 @@ function Login() {
                     }
                 })
             }catch(error) {
+                setRegisterBtnText("Register")
                 console.log(error)
                 setRegisterStatus('Error occured. Please try again.')
             }
         }else{
+            setRegisterBtnText('Register')
             setRegisterStatus('Please fill all the blanks')
         }
 
@@ -58,6 +64,7 @@ function Login() {
 
     const loginUser = (username, password) => {
         try{
+            setLoginBtnText('Loading...')
             fetch(`${import.meta.env.VITE_BASE_URL}/user/login`, {
                 method: "POST",
                 body: JSON.stringify({
@@ -72,21 +79,20 @@ function Login() {
         }catch(error){
             console.log(error)
             setLoginStatus('Error occured. Please try again.')
+            setLoginBtnText('Login')
         }
     }
 
     const handleAfterLogin = (res) => {
         if(res == "unauthorized"){
-            console.log("WRONG PASSWORD")
+            setLoginBtnText("Login")
             setLoginStatus('Password is wrong')
         }else if(res == "nouser"){
-            console.log("WRONG USERNAME")
+            setLoginBtnText("Login")
             setLoginStatus('There is no account with this username')
         }else{
-            console.log(`Successful login: ${res}`)
             localStorage.setItem("userId", res)
             console.log(`Local storage item: ${localStorage.getItem("userId")}`)
-            setLoginStatus('')
             location.reload()
         }
     }
@@ -98,14 +104,14 @@ function Login() {
                 <input type="text" placeholder='username' onChange={(e) => { setRegisterUsername(e.target.value) }} />
                 <input type="text" placeholder='password' onChange={(e) => { setRegisterPassword(e.target.value) }} />
                 <input type="file" accept="image/*" onChange={(e) => { handleImageUpload(e) }} />
-                <button onClick={() => {registerUser( registerUsername, registerPassword, profilePicture )}}>Register</button>
+                <button onClick={() => {registerUser( registerUsername, registerPassword, profilePicture )}}>{registerBtnText}</button>
                 <p>{registerStatus}</p>
             </div>
             <div>
                 <h1>login</h1>
                 <input type="text" placeholder='username' onChange={(e) => { setLoginUsername(e.target.value) }} />
                 <input type="text" placeholder='password' onChange={(e) => { setLoginPassword(e.target.value) }} />
-                <button onClick={() => {loginUser(loginUsername, loginPassword)}}>Login</button>
+                <button onClick={() => {loginUser(loginUsername, loginPassword)}}>{loginBtnText}</button>
                 <p>{loginStatus}</p>
             </div>
         </div>

@@ -4,14 +4,16 @@ import { isImage } from '../../Utils'
 function ExpandedProfile( { userData,  imgUrl}) {
 
     const [newUsername, setNewUsername] = useState('')
+    const [changeUsernameStatus, setChangeUsernameStatus] = useState('Change Username')
+
     const [profilePicture, setProfilePicture] = useState()
-    // const [buttonState, setButtonState] = useState(true)
+    const [profileBtnStatus, setProfileBtnStatus] = useState('Change Profile Picture')
     const [registerStatus, setRegisterStatus] = useState('')
 
 
     const changeUsername = () => {
         if(newUsername != '' && newUsername){
-
+            setChangeUsernameStatus('Loading...')
             console.log("Username change request sent for", newUsername)
 
             fetch(`${import.meta.env.VITE_BASE_URL}/user/username/${localStorage.getItem("userId")}`, {
@@ -24,8 +26,6 @@ function ExpandedProfile( { userData,  imgUrl}) {
                 }
             }).then(response => response.json()).then(data => {console.log(data); location.reload()})
 
-        }else{
-            console.log('please...')
         }
     }
 
@@ -46,6 +46,7 @@ function ExpandedProfile( { userData,  imgUrl}) {
 
     const changeProfile = () => {
         if(profilePicture != undefined && profilePicture != ''){
+            setProfileBtnStatus('Loading...')
 
             const newImageData = new FormData();
 
@@ -67,10 +68,6 @@ function ExpandedProfile( { userData,  imgUrl}) {
     }
 
     
-
-
-
-
     return (
         <div className='border-orange-900 border-solid border-8'>
             <img src={imgUrl} alt="avatar" className='h-20' />
@@ -79,13 +76,12 @@ function ExpandedProfile( { userData,  imgUrl}) {
 
             <div>
                 <input type="text" onChange={(e) => { setNewUsername(e.target.value) } } placeholder='Change Username' />
-                <p>{`New Username: ${newUsername}`}</p>
-                <button onClick={() => {changeUsername()}} >Change Username</button>
+                <button onClick={() => {changeUsername()}} >{changeUsernameStatus}</button>
             </div>
 
             <div>
                 <input type="file" accept="image/*" onChange={(e) => {handleImageUpload(e)}} />
-                <button onClick={() => {changeProfile()}}>Change Profile Image</button>
+                <button onClick={() => {changeProfile()}}>{profileBtnStatus}</button>
                 <p>{registerStatus}</p>
             </div>
         </div>
