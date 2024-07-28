@@ -2,6 +2,7 @@ import React from 'react'
 import gear from '../../assets/gear.png'
 import Source from './homeComponents/Source'
 import './home.css'
+import Fade from 'react-reveal/Fade'
 
 function SectionF() {
   return (
@@ -16,6 +17,7 @@ function SectionF() {
 
       <div className='z-40 relative flex flex-col items-center justify-around h-dvh'>
 
+        <Fade>
         <div>
           <h1 className='font-display text-white drop-shadow-lg text-xbig-font md:text-xxbig-font font-bold'>TechQuiz</h1>
           <p className='text-second-text text-center mt-[-1rem] md:mt-[-2rem] text-xs-font'> Made by <a href='https://www.github.com/nureddinfarzaliyev'> <u> Nureddin Farzaliyev </u> </a> </p>
@@ -31,6 +33,7 @@ function SectionF() {
           </a>
           <p className='text-second-text text-sm-font'> <i> Scroll Down To See More </i> </p>
         </div>
+        </Fade>
 
       </div>
 
