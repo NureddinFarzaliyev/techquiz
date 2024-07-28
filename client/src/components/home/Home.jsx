@@ -1,6 +1,8 @@
 import React from 'react'
 import Container from '../Container'
-import Auth from './Auth'
+import SectionF from './SectionF'
+import SectionS from './SectionS'
+import SectionT from './SectionT'
 
 function Home() {
 
@@ -8,7 +10,15 @@ function Home() {
   console.log(isLoggedIn)
 
   if(isLoggedIn == null){
-    return (<Auth/>) 
+    return (
+      
+    <>
+    <SectionF />
+    <SectionS />
+    <SectionT />
+    </>
+    
+    ) 
   }else{
     return(<Container />)
   }

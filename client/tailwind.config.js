@@ -5,7 +5,28 @@ export default {
   "./src/**/*.{js,ts,jsx,tsx}",
 ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "main-bg": "#320E3B",
+        "second-bg": "#6E2083",
+        "main-accent": "#00A99D",
+        "second-accent": "#007B7A",
+        "second-text": "rgba(255, 255, 255, 0.5)",
+        "overlay": "rgba(0,0,0,0.7)"
+      },
+      fontSize: {
+        "xxbig-font": "130px",
+        "xbig-font": "72px",
+        "big-font": "36px",
+        "med-font": "27px",
+        "sm-font": "18px",
+        "xs-font": "12px"
+      },
+      fontFamily: {
+        "display": ['Play', 'sans-serif'],
+        "text": ['Raleway', 'serif']
+      }
+    },
   },
   plugins: [],
 }
