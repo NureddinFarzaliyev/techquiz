@@ -1,0 +1,23 @@
+.Hard{
+    background-color: #F16F5D;
+}
+
+.Hard:hover{
+    background-color: rgb(240, 74, 52);
+}
+
+.Medium{
+    background-color: #F1EB5D;
+}
+
+.Medium:hover{
+background-color: #d6d015;
+}
+
+.Easy:hover{
+    background-color: #49d430;
+}
+
+.Easy{
+    background-color: #72F15D;
+}

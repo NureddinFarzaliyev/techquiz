@@ -3,7 +3,7 @@ import {useState} from 'react'
 import htmlImg from '../../../assets/HTML.svg'
 import dockerImg from '../../../assets/Docker.svg'
 import linuxImg from '../../../assets/Linux.svg'
-import mysqlImg from '../../../assets/MySql.svg'
+import mysqlImg from '../../../assets/MySQL.svg'
 import phpImg from '../../../assets/PHP.svg'
 import pythonImg from '../../../assets/Python.svg'
 

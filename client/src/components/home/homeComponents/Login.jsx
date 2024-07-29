@@ -39,7 +39,8 @@ function Login() {
         }else{
             localStorage.setItem("userId", res)
             console.log(`Local storage item: ${localStorage.getItem("userId")}`)
-            location.reload()
+            // location.reload()
+            window.location.href = '/'
         }
     }
 

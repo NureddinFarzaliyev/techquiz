@@ -4,13 +4,12 @@ import TopicQuizzes from './TopicQuizzes'
 
 function QuizzesContainer() {
   return (
-    <>
-    <h1>Choose a quiz</h1>
-    <div>
-        <GeneralQuizzes/>
-        <TopicQuizzes/>
+    <div className='pt-32 px-10 flex justify-center pb-32'>
+      <div className='md:w-min'>
+          <GeneralQuizzes/>
+          <TopicQuizzes/>
+      </div>
     </div>
-    </>
   )
 }
 
