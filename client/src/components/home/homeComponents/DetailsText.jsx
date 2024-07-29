@@ -1,10 +1,10 @@
 import React from 'react'
-import Fade from 'react-reveal/Fade'
+import {Fade} from 'react-awesome-reveal'
 
 function DetailsText() {
   return (
-    <Fade>
-    <div className='text-white md:w-[75vw] lg:w-[140vw]'>
+    <Fade delay={100} triggerOnce={true}>
+    <div className='text-white md:w-[45vw] lg:w-[55vw]'>
         <h1 className='font-display text-big-font md:text-xbig-font font-bold'>TechQuiz</h1>
         <p className='text-sm-font md:text-med-font mt-1 md:mt-10'>“TechQuiz” is a <b>MERN Stack</b> Project.</p>
         <p className='text-sm-font md:text-med-font mt-1 md:mt-10'>Registered user data are saved on <b>MongoDB</b>. I've created <b>REST API</b> using <b>Node.js</b> (express) to communicate with database. I've used quizAPI to fetch questions in different topics.</p>

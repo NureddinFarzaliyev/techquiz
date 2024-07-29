@@ -11,9 +11,9 @@ body{
     }
 }
 
-.animateSpin{
+/* .animateSpin{
     animation: spin 30s infinite forwards linear;
-}
+} */
 
 @keyframes fadeIn {
     from{opacity: 0%;}
@@ -57,7 +57,7 @@ body{
     }
 }
 
-.float1{
+/* .float1{
     animation: float 3s ease-in-out infinite;
 }
 
@@ -75,4 +75,4 @@ body{
 
 .float5{
     animation: float 3.5s ease-in-out infinite;
-}
+} */
