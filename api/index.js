@@ -80,8 +80,6 @@ app.post('/user/login', async (req, res) => {
     try{
         const user = await User.findOne( {username: req.body.username} )
 
-        console.log(`TRYING TO LOGIN WITH: ${req.body.username} : ${req.body.password}`)
-
         if(user){
             const isCorrect = await bcrypt.compare(req.body.password, user.password)
 
@@ -146,7 +144,6 @@ app.put('/user/:id', async (req, res) => {
 app.put('/user/username/:id', async (req, res) => {
 
     try{
-        console.log("Username change request came")
         const userData = await User.findOne( {_id: req.params.id} )
         userData.username = await req.body.newUsername
         await User.updateOne( {_id: req.params.id }, userData )
