@@ -11,11 +11,13 @@ function AnswerButton( { text, isCorrect, onCorrect, onFalse, btnState } ) {
         }
     }
 
-  return (
-    <button  disabled={btnState} className='border-solid border-2 border-red-400' onClick={(e) => {handleButtonClick(e)}}>
-        {text}
-    </button>
-  )
+    if(text != null){
+        return (
+          <button  disabled={btnState} className='text-left mt-3 p-3 rounded-md bg-second-bg hover:bg-second-accent transition-all' onClick={(e) => {handleButtonClick(e)}}>
+              {text}
+          </button>
+        )
+    }
 }
 
 export default AnswerButton

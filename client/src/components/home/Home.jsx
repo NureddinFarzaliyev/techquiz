@@ -9,7 +9,6 @@ import './home.css'
 function Home() {
 
   const isLoggedIn = localStorage.getItem("userId")
-  console.log(isLoggedIn)
 
   if(isLoggedIn == null){
 

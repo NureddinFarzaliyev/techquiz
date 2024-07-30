@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import QuizContainer from './QuizContainer';
 import QuizHeader from './QuizHeader';
 import { Navigate, Link } from 'react-router-dom';
+import backImg from '../../assets/back.svg'
 
 function QuizPage({}) {
     const API_KEY = import.meta.env.VITE_QUIZ_API_KEY
@@ -53,27 +54,23 @@ function QuizPage({}) {
 
     if(ifLoggedIn()){
         return (
-            <>
-            <QuizHeader />
-    
-            <div>
-                <div>{name}</div>
-                <div>{difficulty}</div>
-            </div>
-    
-    
-            <QuizContainer data={data} difficulty={difficulty}/>    
+            <div className='flex flex-col items-center h-dvh px-10 lg:px-32'>
+                <QuizHeader name={name} difficulty={difficulty} />
+        
+                <QuizContainer data={data} difficulty={difficulty}/>    
 
-            <div>
-                <Link to="/">Go Back</Link>
-            </div>
+                <Link to="/">
+                    <div className='absolute translate-x-[-50%] bottom-10 flex gap-3 px-4 bg-second-bg opacity-50 hover:opacity-100 transition-all py-2 rounded-md text-white'>
+                        <img src={backImg} />
+                        <p>Back</p>
+                    </div>
+                </Link>
     
-            </>
+            </div>
         )
     }else{
         return(
             <Navigate to="/" />
-            // <h1>NOT LOGGED IN</h1>
         )
     }
 }

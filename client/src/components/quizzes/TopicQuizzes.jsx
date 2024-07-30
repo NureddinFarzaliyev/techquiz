@@ -1,19 +1,7 @@
-import React, { useEffect, useState } from 'react'
 import QuizCard from './QuizCard'
-import {Splide, SplideSlide} from '@splidejs/react-splide'
-import '@splidejs/react-splide/css'
+
 
 function TopicQuizzes() {
-
-
-  const quizNames = ["Linux", "Bash", "Kubernetes", "HTML", "Python", "PHP", "Docker", "MySQL"]
-
-  const [windowWidth, setWindowWidth] = useState()
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth)
-    console.log(window.innerWidth)
-  }, [window.innerWidth])
 
   return (
     <div>

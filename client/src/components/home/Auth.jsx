@@ -58,7 +58,6 @@ function Login() {
             setRegisterStatus('File is too big')
             e.target.value = ''
         }else{
-            console.log('image uploaded')
             setProfilePicture(e.target.files[0])
         }
     }
@@ -93,7 +92,6 @@ function Login() {
             setLoginStatus('There is no account with this username')
         }else{
             localStorage.setItem("userId", res)
-            console.log(`Local storage item: ${localStorage.getItem("userId")}`)
             location.reload()
         }
     }

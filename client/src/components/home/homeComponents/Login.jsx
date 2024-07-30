@@ -38,8 +38,6 @@ function Login() {
             setLoginStatus('There is no account with this username')
         }else{
             localStorage.setItem("userId", res)
-            console.log(`Local storage item: ${localStorage.getItem("userId")}`)
-            // location.reload()
             window.location.href = '/'
         }
     }

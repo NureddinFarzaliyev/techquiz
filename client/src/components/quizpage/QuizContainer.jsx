@@ -52,11 +52,11 @@ function QuizContainer({data, difficulty}) {
       pts(true);
 
       // toggle button styling
-      button.classList.add('bg-green-800')
+      button.classList.add('true-anim')
       setBtnDisabled(true)
       setTimeout(() => {
         setBtnDisabled(false)
-        button.classList.remove('bg-green-800')
+        button.classList.remove('true-anim')
         setCurrentQuestion((c) => c + 1)
       }, 500);
     }
@@ -96,9 +96,12 @@ function QuizContainer({data, difficulty}) {
           addPoints(earnedPoints + extraPoints(earnedPoints))
 
           return(
-            <p className='bg-red-800'> 
-              You've earned {earnedPoints + extraPoints(earnedPoints)} points.
-            </p>          
+            <div className='mt-16'>
+              <p className='text-white text-big-font font-bold text-center'> 
+                You've earned {earnedPoints + extraPoints(earnedPoints)} points.
+              </p>          
+              <p className='text-second-text text-sm-font text-center mt-5'>Go back to solve more quizzes <br/> and earn more points!</p>
+            </div>
           )
 
         }else{
@@ -111,10 +114,12 @@ function QuizContainer({data, difficulty}) {
     }
 
   return (
-    <div>
-      <div>{setQuestions()}</div>
-      <p>{earnedPoints}</p>
-    </div>
+    <>
+      <p className='text-second-text text-sm-font my-5'>{earnedPoints} pts</p>
+      <div className='mt-14 w-full'>
+        {setQuestions()}
+      </div>
+    </>
   )
 }
 

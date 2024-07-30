@@ -4,7 +4,6 @@ import editIcon from '../../assets/edit.svg'
 
 function BasicProfile( {imageUrl, userData, setIsEditOpen} ) {
     const handleLogOut = () => {
-        console.log('Logged out')
         localStorage.removeItem("userId")
         location.reload()
     } 

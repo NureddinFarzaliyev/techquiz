@@ -7,9 +7,9 @@ function QuestionCard({question, onCorrect, onFalse, btnState}) {
     const correct_answers = question.correct_answers
 
   return (
-    <div className='border-solid border-black border-2'>
-        {questionText}
-        <ul>
+    <div className='text-white'>
+      <p className='text-med-font font-bold'>{questionText}</p>
+        <ul className='mt-5 flex flex-col'>
             <AnswerButton btnState={btnState} className="answerBtn" text={a} isCorrect={correct_answers[`answer_a_correct`]} onFalse={onFalse} onCorrect={onCorrect}/>
             <AnswerButton btnState={btnState} className="answerBtn" text={b} isCorrect={correct_answers[`answer_b_correct`]} onFalse={onFalse} onCorrect={onCorrect}/>
             <AnswerButton btnState={btnState} className="answerBtn" text={c} isCorrect={correct_answers[`answer_c_correct`]} onFalse={onFalse} onCorrect={onCorrect}/>

@@ -1,30 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-function QuizHeader() {
+function QuizHeader({name, difficulty}) {
 
-    const [userData, setUserData] = useState('');
-
-    const fetchUserData = () => {
-        const userId = localStorage.getItem('userId')
-        if(userId){
-            try{
-                fetch(`${import.meta.env.VITE_BASE_URL}/user/${userId}`)
-                .then(response => response.json())
-                .then(data => setUserData(data))
-            }catch(error){
-                console.log(error)
-            }
-        }
-    }
-
-    useEffect(() => {
-        fetchUserData();
-    }, [])
+    
 
     return (
-        <div>
-            <h1>{userData.username}</h1>
-            <p>{userData.points}</p>
+        <div className='bg-second-bg w-56 flex flex-col justify-center items-center py-2 drop-shadow-2xl clip-reversed-trapezium'>
+            <h1 className='text-white text-med-font'>{name}</h1>
+            <i className='text-second-text text-sm-font mt-[-5px]'>{difficulty}</i>
         </div>
     )
 }

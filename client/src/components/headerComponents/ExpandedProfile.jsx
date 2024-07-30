@@ -16,7 +16,6 @@ function ExpandedProfile() {
     const changeUsername = () => {
         if(newUsername != '' && newUsername){
             setChangeUsernameStatus('Loading...')
-            console.log("Username change request sent for", newUsername)
 
             fetch(`${import.meta.env.VITE_BASE_URL}/user/username/${localStorage.getItem("userId")}`, {
                 method: "PUT",

@@ -23,7 +23,7 @@ function QuizCard( { quizName } ) {
   const difficultyButton = (quizName, quizDifficulty) => {
     return(
       <Link to={`/quiz/${quizName}/${quizDifficulty}`}>
-        <button className={`${quizDifficulty} rounded-md w-32 text-xs-font transition-all`}>{quizDifficulty}</button>
+        <button className={`${quizDifficulty} font-semibold rounded-md w-32 shadow-lg text-xs-font transition-all`}>{quizDifficulty}</button>
       </Link>
     )
   }

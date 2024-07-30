@@ -12,12 +12,6 @@ function Header() {
     const [imageUrl, setImageUrl] = useState('')
     const [isEditOpen, setIsEditOpen] = useState(false)
 
-    // const handleLogOut = () => {
-    //     console.log('Logged out')
-    //     localStorage.removeItem("userId")
-    //     location.reload()
-    // } 
-
     const fetchUserData = () => {
         const userId = localStorage.getItem('userId')
         if(userId){
