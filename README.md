@@ -1,11 +1,20 @@
 # MERN Stack Technical Quiz app
 
-🏗 This is a MERN Stack app to solve different quizes. You can create an account and login to start solving technical quizzes in different topics.
+## Overview
+This is a **MERN Stack** app to solve different quizes. You can create an account and login to start solving technical quizzes in different topics. You'll earn points while solving quizzes.
 
-****
+## Features
+- Login / Register with Profile Picture
+- Changing username & profile picture
+- General quizzes and topic quizzes
+- 3 levels (easy / medium / hard) for each quiz
+
+#### Will be added:
+- Level System based on points
+- Leaderboard
+
+## Tech Stack:
 <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/TailwindCSS-Dark.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/MongoDB.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/ExpressJS-Dark.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/React-Dark.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/NodeJS-Dark.svg" height="50" width="50" />
-
-****
 
 ### I've used:
 - **React.js** on client side
