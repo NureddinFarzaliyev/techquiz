@@ -144,13 +144,21 @@ app.put('/user/:id', async (req, res) => {
 app.put('/user/username/:id', async (req, res) => {
 
     try{
-        const userData = await User.findOne( {_id: req.params.id} )
-        userData.username = await req.body.newUsername
-        await User.updateOne( {_id: req.params.id }, userData )
+        const checkUser = await User.findOne( {username: req.body.newUsername} )
+
+        if(checkUser){
+            res.status(400).send(JSON.stringify('userexists'))
+        }else{
+            const userData = await User.findOne( {_id: req.params.id} )
+            userData.username = await req.body.newUsername
+            await User.updateOne( {_id: req.params.id }, userData )
+            res.send(JSON.stringify(`Username changed to: ${req.body.newUsername} (${req.params.id})`))
+        }
+        
     
-        res.send(JSON.stringify(`Username changed to: ${req.body.newUsername} (${req.params.id})`))
     }catch(error){
-        res.send(error.message)
+        res.send(JSON.stringify(error.message))
+        // console.log(error.message)
     }
 
 

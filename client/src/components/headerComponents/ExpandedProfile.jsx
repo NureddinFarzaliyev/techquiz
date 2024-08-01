@@ -13,7 +13,7 @@ function ExpandedProfile() {
     const [registerStatus, setRegisterStatus] = useState('')
 
 
-    const changeUsername = () => {
+    const changeUsername = async () => {
         if(newUsername != '' && newUsername){
             setChangeUsernameStatus('Loading...')
 
@@ -25,7 +25,14 @@ function ExpandedProfile() {
                 headers: {
                     "Content-Type": "application/json"
                 }
-            }).then(response => response.json()).then(data => {console.log(data); location.reload()})
+            }).then(response => response.json()).then(data => {
+                if(data == 'userexists'){
+                    window.alert('This username already exists. Please choose another one.')
+                    setChangeUsernameStatus('Change Username')
+                }else{
+                    location.reload()
+                }
+            })
 
         }
     }
