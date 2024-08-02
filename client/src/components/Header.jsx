@@ -4,6 +4,8 @@ import ExpandedProfile from './headerComponents/ExpandedProfile'
 import BasicProfile from './headerComponents/BasicProfile'
 import MobileProfile from './headerComponents/MobileProfile'
 import editIcon from '../assets/edit.svg'
+import { fetchUserData} from './Utils'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function Header() {
@@ -12,42 +14,16 @@ function Header() {
     const [imageUrl, setImageUrl] = useState('')
     const [isEditOpen, setIsEditOpen] = useState(false)
 
-    const fetchUserData = () => {
-        const userId = localStorage.getItem('userId')
-        if(userId){
-            try{
-                fetch(`${import.meta.env.VITE_BASE_URL}/user/${userId}`)
-                .then(response => response.json())
-                .then(data => handleUserData(data))
-            }catch(error){
-                console.log(error)
-            }
-        }
-    }
-
-    const handleUserData = (data) => {
-
-        setUserData(data)
-
-        if(data.profilePicture != ''){
-            const img = `data:image/png;base64,${data.profilePicture}`;
-            setImageUrl(img)
-        }else{
-            setImageUrl('./src/assets/avatar.png')
-        }
-
-    }
-
-
     useEffect(() => {
-        fetchUserData()
+        fetchUserData(setUserData, setImageUrl, localStorage.getItem('userId'))
     }, [])
-
 
     return (
         <div className='bg-second-bg py-4 px-4 sm:px-10 flex justify-between items-center fixed w-full z-50'>
 
-            <h1 className='text-white font-bold text-big-font text-3xl font-display drop-shadow-2xl'>TechQuiz</h1>
+            <Link to={'/'}>
+                <h1 className='text-white p-3 font-bold text-big-font text-3xl font-display drop-shadow-2xl'>TechQuiz</h1>
+            </Link>
 
             {/* ! BASIC PROFILE */}
 

@@ -70,7 +70,7 @@ app.post('/user/new', upload.single('profilePicture') , async (req, res) => {
 
         console.log(`User ${req.body.username} sent to database`)
     } catch (error) {
-        res.send(error.message)
+        res.send(error)
     }
 })
 
@@ -93,7 +93,7 @@ app.post('/user/login', async (req, res) => {
             res.send(JSON.stringify('nouser'))
         }
     }catch (error){
-        res.send(error.message)
+        res.send(error)
     }
 })
 
@@ -116,7 +116,30 @@ app.get( '/user/:id', async (req, res) => {
 
         res.send(JSON.stringify(userWithBase64Pic))
     }catch(error){
-        res.send(error.message)
+        res.send(error)
+    }
+    
+
+})
+
+
+app.get( '/:username', async (req, res) => {
+
+    try{
+        const userData = await User.findOne( { username: req.params.username } )
+
+        if(!userData){
+            return res.status(404).send('User not found')
+        }
+
+        const userWithBase64Pic = {
+            ...userData.toObject(),
+            profilePicture: userData.profilePicture != null ? userData.profilePicture.toString('base64') : ''
+        };
+
+        res.send(JSON.stringify(userWithBase64Pic))
+    }catch(error){
+        res.send(error)
     }
     
 
@@ -133,7 +156,7 @@ app.put('/user/:id', async (req, res) => {
     
         res.send(JSON.stringify(`New pts: ${userData.points} (${req.body.points} added)`))
     }catch(error){
-        res.send(error.message)
+        res.send(error)
     }
 
 
@@ -157,8 +180,8 @@ app.put('/user/username/:id', async (req, res) => {
         
     
     }catch(error){
-        res.send(JSON.stringify(error.message))
-        // console.log(error.message)
+        res.send(JSON.stringify(error))
+        // console.log(error)
     }
 
 
@@ -175,6 +198,6 @@ app.put('/user/picture/:id', upload.single("profilePicture") , async (req, res) 
 
         res.send(JSON.stringify(`Profile Picture Changed`))
     }catch(error){
-        res.send(error.message)
+        res.send(error)
     }
 })
