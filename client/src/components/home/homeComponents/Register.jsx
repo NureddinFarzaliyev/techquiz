@@ -69,7 +69,7 @@ function Register() {
   return (
     <div className='flex flex-col sm:w-[15rem] md:w-[25rem] lg:w-[30rem]'>
         <h1 className='text-big-font text-white font-display mb-5'>Register</h1>
-        <input className='rounded px-3 h-8' type="text" placeholder='Username' onChange={(e) => { setRegisterUsername(e.target.value) }} />
+        <input className='rounded px-3 h-8' type="text" placeholder='Username' value={registerUsername} onChange={(e) => { setRegisterUsername(e.target.value.replace(/\s/g, '')) }} />
         <input className='rounded px-3 h-8 mt-3' type="password" placeholder='Password' onChange={(e) => { setRegisterPassword(e.target.value) }} />
         <label className='cursor-pointer flex-col md:flex-row items-center flex gap-3 md:gap-6 ml-1 mt-7 text-white'>
             <input className='hidden' type="file" accept="image/*" onChange={(e) => { handleImageUpload(e) }} />
