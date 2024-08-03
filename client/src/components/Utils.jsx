@@ -1,3 +1,6 @@
+
+// ! USER DATA
+
 const handleImage = (data, setImageUrl) => {
     if(data.profilePicture != ''){
         const img = `data:image/png;base64,${data.profilePicture}`;
@@ -27,3 +30,54 @@ export const fetchUserData = (setUserData, setImageUrl, userId, username) => {
         sendRequest(`${import.meta.env.VITE_BASE_URL}/${username}`, setUserData, handleImage, setImageUrl)
     }
 }
+
+// ! USER LEVEL
+
+const levelData = (level, color, current, next) => {
+    return {
+        level: level,
+        color: color,
+        nextLevelPoints: next,
+        currentLevelPoints: current
+    }
+}
+
+const levels = [levelData('Trainee', '#D3D3D3',0 , 200), 
+    levelData('Junior', '#ADD8E6', 200, 500),
+    levelData('Middle', '#90EE90', 500, 2000),
+    levelData('Senior', '#FFD700', 2000, 5000),
+    levelData('Expert', '#FFA07A', 5000, 10000),
+    levelData('Sensei', '#FFD700', null, null)
+]
+
+const pointsArr = [0, 200, 500, 2000, 5000, 10000]
+
+const getLevelData = (pts) => {
+    if(pts < pointsArr[1]){
+        return levels[0]
+    }else if(pts < pointsArr[2]){
+        return levels[1]
+    }else if(pts < pointsArr[3]){
+        return levels[2]
+    }else if(pts < pointsArr[4]){
+        return levels[3]
+    }else if(pts < pointsArr[5]){
+        return levels[4]
+    }else{
+        return levels[5]
+    }
+}
+
+
+export const Level = (pts) => {
+    const {level, color, nextLevelPoints, currentLevelPoints} = getLevelData(pts)
+    return {
+        currentLevelPoints: currentLevelPoints,
+        points: pts,
+        nextLevelPoints: nextLevelPoints,
+        label: level,
+        color: color,
+    }
+}
+
+console.log(Level(1203))

@@ -37,7 +37,7 @@ PUT http://localhost:3000/user/66a10d90d0613d38d8fd6d1d
 Content-Type: application/json
 
 {
-    "points": 200
+    "points": 200000
 }
 
 #####
