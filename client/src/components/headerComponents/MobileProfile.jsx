@@ -29,6 +29,7 @@ function BasicProfile( {imageUrl, userData, setIsEditOpen} ) {
 
                     <img src={imageUrl} alt="avatar" className={`h-32 w-32 shadow-2xl border-2 rounded-full ${Level(userData.points).label}Border ${Level(userData.points).label}Shadow object-cover`} />
                     <h1 className='text-white text-big-font mt-3 font-bold'>{userData.username}</h1>
+                    <span className='text-white text-sm-font'>{Level(userData.points).label}</span>
                     <span className='text-second-text text-sm-font'>{userData.points} Points</span>
 
                     <div className='mt-10 w-full flex justify-around'>
