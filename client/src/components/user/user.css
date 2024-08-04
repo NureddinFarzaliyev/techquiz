@@ -12,9 +12,16 @@
 .ExpertBorder{border-color: #FFA07A; }
 .SenseiBorder{border-color: #FFD700;}
 
-.TraineeShadow{ box-shadow: 0px 0px 100px rgba(211, 211, 211, 0.7);}
-.JuniorShadow{ box-shadow: 0px 0px 100px rgba(93, 182, 223, 0.7);}
-.MiddleShadow{ box-shadow: 0px 0px 100px rgba(58, 46, 222, 0.7);}
-.SeniorShadow{ box-shadow: 0px 0px 100px rgba(64, 217, 97, 0.7);}
-.ExpertShadow{ box-shadow: 0px 0px 100px rgba(255, 161, 108, 0.7);}
-.SenseiShadow{ box-shadow: 0px 0px 100px rgba(250, 238, 0, 0.7);}
+.TraineeShadow{ box-shadow: 0px 0px 70px rgba(211, 211, 211, 0.7);}
+.JuniorShadow{ box-shadow: 0px 0px 70px rgba(93, 182, 223, 0.7);}
+.MiddleShadow{ box-shadow: 0px 0px 70px rgba(58, 46, 222, 0.7);}
+.SeniorShadow{ box-shadow: 0px 0px 70px rgba(64, 217, 97, 0.7);}
+.ExpertShadow{ box-shadow: 0px 0px 70px rgba(255, 161, 108, 0.7);}
+.SenseiShadow{ box-shadow: 0px 0px 70px rgba(250, 238, 0, 0.7);}
+
+.TraineeSmallShadow{ box-shadow: 0px 0px 20px rgba(211, 211, 211, 0.7);}
+.JuniorSmallShadow{ box-shadow: 0px 0px 20px rgba(93, 182, 223, 0.7);}
+.MiddleSmallShadow{ box-shadow: 0px 0px 20px rgba(58, 46, 222, 0.7);}
+.SeniorSmallShadow{ box-shadow: 0px 0px 20px rgba(64, 217, 97, 0.7);}
+.ExpertSmallShadow{ box-shadow: 0px 0px 20px rgba(255, 161, 108, 0.7);}
+.SenseiSmallShadow{ box-shadow: 0px 0px 20px rgba(250, 238, 0, 0.7);}
