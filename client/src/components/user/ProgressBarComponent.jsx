@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './user.css'
 
 function ProgressBarComponent( { data } ) {
 
-  const {label, currentLevelPoints, nextLevelPoints, color, points } = data
-
-  const [progress, setProgress] = useState("")
+  const {label, nextLevelPoints, points } = data
 
   useEffect(() => {
     document.querySelector('.progressInner').style.width = `${points/nextLevelPoints*100}%`

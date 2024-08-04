@@ -2,7 +2,7 @@ import React from 'react'
 import logoutIcon from '../../assets/logout.svg'
 import editIcon from '../../assets/edit.svg'
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react'
-import { Level } from '../Utils'
+import { Level } from '../user/UserUtils'
 import { useState } from 'react'
 import '../user/user.css'
 

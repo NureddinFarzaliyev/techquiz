@@ -1,1 +1,5 @@
-{}
+{
+  "dependencies": {
+    "react-placeholder-loading": "^0.5.30"
+  }
+}

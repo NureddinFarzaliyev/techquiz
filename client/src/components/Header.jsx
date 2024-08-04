@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { DialogBackdrop, Dialog, DialogPanel } from '@headlessui/react'
 import ExpandedProfile from './headerComponents/ExpandedProfile'
 import BasicProfile from './headerComponents/BasicProfile'
 import MobileProfile from './headerComponents/MobileProfile'
-import editIcon from '../assets/edit.svg'
-import { fetchUserData} from './Utils'
-import { Link, useNavigate } from 'react-router-dom'
-
+import BasicProfilePlaceholder from './headerComponents/BasicProfilePlaceholder'
+import MobileProfilePlaceholder from './headerComponents/MobileProfilePlaceholder'
+import { fetchUserData} from './user/UserUtils'
+import { loadComponent } from '../Utils'
 
 function Header() {
 
@@ -18,8 +19,11 @@ function Header() {
         fetchUserData(setUserData, setImageUrl, localStorage.getItem('userId'))
     }, [])
 
+
     return (
         <div className='bg-second-bg py-4 px-4 sm:px-10 flex justify-between items-center fixed w-full z-50'>
+
+            {/* LOGO */}
 
             <Link to={'/'}>
                 <h1 className='text-white p-3 font-bold text-big-font text-3xl font-display drop-shadow-2xl'>TechQuiz</h1>
@@ -28,11 +32,11 @@ function Header() {
             {/* ! BASIC PROFILE */}
 
             <div className='hidden sm:block'>
-                <BasicProfile imageUrl={imageUrl} userData={userData} setIsEditOpen={setIsEditOpen} />
+                {loadComponent(userData, <BasicProfilePlaceholder />, <BasicProfile imageUrl={imageUrl} userData={userData} setIsEditOpen={setIsEditOpen} />)}
             </div>
 
             <div className='block sm:hidden'>
-                <MobileProfile imageUrl={imageUrl} userData={userData} setIsEditOpen={setIsEditOpen} />
+                {loadComponent(userData, <MobileProfilePlaceholder />, <MobileProfile imageUrl={imageUrl} userData={userData} setIsEditOpen={setIsEditOpen} />)}
             </div>
 
             {/* EXPANDED PROFILE */}
@@ -46,9 +50,9 @@ function Header() {
                 </div>
             </Dialog>
 
-
         </div>
     )
+    
 }
 
 export default Header

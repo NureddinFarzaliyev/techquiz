@@ -2,7 +2,8 @@ import React from 'react'
 import logoutIcon from '../../assets/logout.svg'
 import editIcon from '../../assets/edit.svg'
 import {useNavigate, Link} from 'react-router-dom'
-import { Level } from '../Utils'
+import { Level } from '../user/UserUtils'
+import { Fade } from 'react-awesome-reveal'
 
 function BasicProfile( {imageUrl, userData, setIsEditOpen} ) {
     const navigate = useNavigate()
@@ -14,6 +15,7 @@ function BasicProfile( {imageUrl, userData, setIsEditOpen} ) {
     } 
 
   return (
+    <Fade>
     <div className='gap-2 flex items-end relative'>
         <button onClick={() => {setIsEditOpen(true)}} className='opacity-75 hover:opacity-100 transition-all bg-main-accent p-2 rounded-full absolute right-[-5px] bottom-[-5px]' > <img className='h-4' src={editIcon} alt="Edit" /> </button>
         <button onClick={() => {handleLogOut()}} className='opacity-50 hover:opacity-100 mt-[-1.5rem] transition-all pb-1' > <img src={logoutIcon} alt="Logout" /> </button>
@@ -25,6 +27,7 @@ function BasicProfile( {imageUrl, userData, setIsEditOpen} ) {
           <img src={imageUrl} alt="avatar" className={`h-16 shadow-2xl ${Level(userData.points).label}Border border-2 w-16 rounded-full object-cover`} />
         </Link>
     </div>
+    </Fade>
   )
 }
 
