@@ -25,21 +25,6 @@ function UserPageProfilePlaceholder() {
         </div>
     </section>
     )
-
-//   return (
-//     <>
-//     <section className='flex absolute left-[50%] top-[55%] flex-col items-center gap-14 translate-x-[-50%] translate-y-[-50%]'>
-//         {placeholderFactory("circle", 250, 250)}
-//         <div className='flex flex-col items-center gap-2'>
-//             {placeholderFactory("rect", 300, 45)}
-//             {placeholderFactory("rect", 200, 35)}
-//         </div>
-//         {placeholderFactory("rect", 400, 25)}
-//     </section> 
-
-//     </>
-    
-//   )
 }
 
 export default UserPageProfilePlaceholder
