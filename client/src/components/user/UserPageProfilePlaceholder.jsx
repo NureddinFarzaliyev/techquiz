@@ -12,8 +12,9 @@ function UserPageProfilePlaceholder() {
     }
 
     return(
-        <section className='h-dvh w-full flex items-center justify-center'>
-        <div className='userCardGradient p-10 mt-14 md:px-10 md:py-16 md:gap-16 rounded-xl shadow-xl flex-col md:flex-row items-center flex '>
+    <>
+    <section className='hidden sm:flex h-dvh w-full items-center justify-center'>
+        <div className='userCardGradient p-10 mt-14 gap-10 md:px-10 md:py-16 md:gap-16 rounded-xl shadow-xl flex-col md:flex-row items-center flex '>
             {placeholderFactory("circle", 250, 250)}
             <div className='flex flex-col gap-10'>
                 <div className='flex flex-col gap-5'>
@@ -24,6 +25,14 @@ function UserPageProfilePlaceholder() {
             </div>
         </div>
     </section>
+    <section className='flex sm:hidden h-dvh w-full items-center justify-center'>
+        <div className='h-96 w-80 userCardGradient p-10 mt-14 gap-10 md:px-10 md:py-16 md:gap-16 rounded-xl shadow-xl flex-col md:flex-row items-center justify-center flex '>
+            
+            <h1 className='text-second-text'>Loading...</h1>
+            
+        </div>
+    </section>
+    </>
     )
 }
 

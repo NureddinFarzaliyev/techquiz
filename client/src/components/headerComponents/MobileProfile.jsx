@@ -5,6 +5,8 @@ import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react'
 import { Level } from '../user/UserUtils'
 import { useState } from 'react'
 import '../user/user.css'
+import shareIcon from '../../assets/share.svg'
+import {Link} from 'react-router-dom'
 
 function BasicProfile( {imageUrl, userData, setIsEditOpen} ) {
 
@@ -15,10 +17,7 @@ function BasicProfile( {imageUrl, userData, setIsEditOpen} ) {
         localStorage.removeItem("userId")
         location.reload()
     } 
-
-
     
-
   return (
     <div>
 
@@ -35,6 +34,11 @@ function BasicProfile( {imageUrl, userData, setIsEditOpen} ) {
                     <div className='mt-10 w-full flex justify-around'>
                         <button onClick={() => {setIsEditOpen(true)}}> 
                             <img src={editIcon} alt="Edit" className='h-8' /> 
+                        </button>
+                        <button onClick={() => {location.reload()}}>
+                            <Link to={`/${userData.username}`}> 
+                                <img src={shareIcon} alt="noo" className='h-8' />
+                            </Link>
                         </button>
                         <button onClick={() => {handleLogOut()}} >
                             <img src={logoutIcon} alt="Logout" className='h-8' />
