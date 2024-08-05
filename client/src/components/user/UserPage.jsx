@@ -26,10 +26,10 @@ function UserPage() {
     }, [userData])
 
     return (
-        <>
+        <div>
         { localStorage.getItem('userId') ? <Header/> : <NonUserHeader />}  
         {loadComponent(userLevel.label, <UserPageProfilePlaceholder />,  <UserPageProfile userData={userData} userLevel={userLevel} imageUrl={imageUrl} />  )}
-        </>
+        </div>
     )
 
 }
