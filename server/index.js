@@ -53,21 +53,23 @@ app.post('/user/new', upload.single('profilePicture') , async (req, res) => {
 
         if(existingUser){
             res.send(JSON.stringify('Username already exists'))
+        }else{
+            const hash  = await bcrypt.hash(req.body.password, 10)
+    
+            const user = new User({
+                username: req.body.username,
+                password: hash,
+                points: 0,
+                profilePicture: req.file ? req.file.buffer : null
+            })
+    
+            await user.save()
+            
+            res.send(user)
+    
+            console.log(`User ${req.body.username} sent to database`)
         }
-        const hash  = await bcrypt.hash(req.body.password, 10)
 
-        const user = new User({
-            username: req.body.username,
-            password: hash,
-            points: 0,
-            profilePicture: req.file ? req.file.buffer : null
-        })
-
-        await user.save()
-        
-        res.send(user)
-
-        console.log(`User ${req.body.username} sent to database`)
     } catch (error) {
         res.send(error)
     }
