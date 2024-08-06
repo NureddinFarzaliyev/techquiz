@@ -2,15 +2,17 @@ import React from 'react'
 import { useState } from 'react'
 
 function Login() {
-    const [loginBtnText, setLoginBtnText] = useState('Login')
-    const [loginUsername, setLoginUsername] = useState('');
-    const [loginPassword, setLoginPassword] = useState('');
-    const [loginStatus, setLoginStatus] = useState('')
+    const [loginData, setLoginData] = useState({
+        username: '',
+        password: '',
+        btnText: 'Login',
+        status: '',
+    })
 
-
-    const loginUser = (username, password) => {
+    const loginUser = (username, password, e) => {
+        e.preventDefault()
         try{
-            setLoginBtnText('Loading...')
+            setLoginData({...loginData, btnText: 'Loading...'})
             fetch(`${import.meta.env.VITE_BASE_URL}/user/login`, {
                 method: "POST",
                 body: JSON.stringify({
@@ -24,18 +26,15 @@ function Login() {
 
         }catch(error){
             console.log(error)
-            setLoginStatus('Error occured. Please try again.')
-            setLoginBtnText('Login')
+            setLoginData({...loginData, status: 'Error occured. Please try again.', btnText: 'Login'})
         }
     }
 
     const handleAfterLogin = (res) => {
         if(res == "unauthorized"){
-            setLoginBtnText("Login")
-            setLoginStatus('Password is wrong')
+            setLoginData({...loginData, btnText: "Login", status: "Password is Wrong"})
         }else if(res == "nouser"){
-            setLoginBtnText("Login")
-            setLoginStatus('There is no account with this username')
+            setLoginData({...loginData, btnText: "Login", status: 'There is no account with this username'})
         }else{
             localStorage.setItem("userId", res)
             window.location.href = '/'
@@ -46,10 +45,13 @@ function Login() {
     return (
         <div className='flex flex-col sm:w-[15rem] md:w-[25rem] lg:w-[30rem]'>
             <h1 className='text-big-font text-white font-display mb-5'>Login</h1>
-            <input className='rounded px-3 h-8' type="text" placeholder='Username' onChange={(e) => { setLoginUsername(e.target.value) }} />
-            <input className='rounded px-3 h-8 mt-3' type="password" placeholder='Password' onChange={(e) => { setLoginPassword(e.target.value) }} />
-            <button className='mt-7 rounded shadow-md hover:bg-second-accent transition-all bg-main-accent h-8 text-white' onClick={() => {loginUser(loginUsername, loginPassword)}}>{loginBtnText}</button>
-            <p className='text-white text-center mt-3'>{loginStatus}</p>
+
+            <form className='flex flex-col'>
+                <input className='rounded px-3 h-8' type="text" placeholder='Username' onChange={(e) => { setLoginData({...loginData, username: e.target.value}) }} />
+                <input className='rounded px-3 h-8 mt-3' type="password" placeholder='Password' onChange={(e) => { setLoginData({...loginData, password: e.target.value}) }} />
+                <button className='mt-7 rounded shadow-md hover:bg-second-accent transition-all bg-main-accent h-8 text-white' onClick={(e) => {loginUser(loginData.username, loginData.password, e)}}>{loginData.btnText}</button>
+                <p className='text-white text-center mt-3'>{loginData.status}</p>
+            </form>
         </div>
     )
 }

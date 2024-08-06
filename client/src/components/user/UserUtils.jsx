@@ -53,7 +53,7 @@ const levels = [levelData('Trainee', '#D3D3D3',0 , 200),
 const pointsArr = [0, 200, 500, 2000, 5000, 10000]
 
 const getLevelData = (pts) => {
-    if(pts){
+    if(pts || pts === 0){
         if(pts < pointsArr[1]){
             return levels[0]
         }else if(pts < pointsArr[2]){
@@ -84,4 +84,4 @@ export const Level = (pts) => {
     }
 }
 
-console.log(Level(1203))
+console.log(Level(0))

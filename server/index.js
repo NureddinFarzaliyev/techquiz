@@ -65,7 +65,6 @@ app.post('/user/new', upload.single('profilePicture') , async (req, res) => {
 
         await user.save()
         
-        res.status(201)
         res.send(user)
 
         console.log(`User ${req.body.username} sent to database`)

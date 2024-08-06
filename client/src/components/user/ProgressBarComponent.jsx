@@ -3,10 +3,10 @@ import './user.css'
 
 function ProgressBarComponent( { data } ) {
 
-  const {label, nextLevelPoints, points } = data
+  const {label, nextLevelPoints, points, currentLevelPoints } = data
 
   useEffect(() => {
-    document.querySelector('.progressInner').style.width = `${points/nextLevelPoints*100}%`
+    document.querySelector('.progressInner').style.width = `${(points - currentLevelPoints )/(nextLevelPoints - currentLevelPoints)*100}%`
   }, [data])
 
 
