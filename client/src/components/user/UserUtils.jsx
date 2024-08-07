@@ -27,7 +27,7 @@ export const fetchUserData = (setUserData, setImageUrl, userId, username) => {
     if(userId){
         sendRequest(`${import.meta.env.VITE_BASE_URL}/user/${userId}`, setUserData, handleImage, setImageUrl)
     }else{
-        sendRequest(`${import.meta.env.VITE_BASE_URL}/${username}`, setUserData, handleImage, setImageUrl)
+        sendRequest(`${import.meta.env.VITE_BASE_URL}/user/username/${username}`, setUserData, handleImage, setImageUrl)
     }
 }
 

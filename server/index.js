@@ -124,7 +124,7 @@ app.get( '/user/:id', async (req, res) => {
 })
 
 
-app.get( '/:username', async (req, res) => {
+app.get( '/user/username/:username', async (req, res) => {
 
     try{
         const userData = await User.findOne( { username: req.params.username } )
@@ -199,6 +199,17 @@ app.put('/user/picture/:id', upload.single("profilePicture") , async (req, res) 
 
         res.send(JSON.stringify(`Profile Picture Changed`))
     }catch(error){
+        res.send(error)
+    }
+})
+
+// ! GET TOP USERS
+
+app.get('/leaderboard/:count', async (req, res) => {
+    try {
+        const leaderboard = await User.find({})
+        res.send(leaderboard.sort((a, b) => b.points - a.points).slice(0, req.params.count))
+    } catch (error) {
         res.send(error)
     }
 })
