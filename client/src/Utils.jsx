@@ -3,7 +3,7 @@ export const isImage = (file) => {
 } 
 
 export const loadComponent = (data, loadingComponent, readyComponent) => {
-    if(data == '' || data == undefined || data == null){
+    if(data == '' || data == undefined || data == null || data == []){
         return(loadingComponent)
     }else{
         return(readyComponent)
@@ -35,5 +35,19 @@ export const getStatusText = (status, def) => {
             return ''
         default:
             return def
+    }
+}
+
+
+
+// ! FETCH LEADERBOARD
+
+export const fetchLeaderboard = (limit, setter) => {
+    try {
+        fetch(`${import.meta.env.VITE_BASE_URL}/leaderboard/${limit}`)
+        .then(response => response.json())
+        .then(data => setter(data))
+    } catch (error) {
+        return error
     }
 }
