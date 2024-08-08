@@ -24,6 +24,17 @@ app.get('/', (req, res) => {
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@techquiz.l1mmyw1.mongodb.net/?retryWrites=true&w=majority&appName=techquiz`)
 .then(() => {console.log('DB Connected Successfully')}).catch((err) => {console.log(err)})
 
+// ! UTILITIES
+
+const pic64Handler = (userData) => {
+    const userWithBase64Pic = {
+        ...userData.toObject(),
+        profilePicture: userData.profilePicture != null ? userData.profilePicture.toString('base64') : ''
+    };
+
+    return userWithBase64Pic
+}
+
 // ! REGISTER NEW USER
 
 const userSchema = new mongoose.Schema({
@@ -99,6 +110,7 @@ app.post('/user/login', async (req, res) => {
 })
 
 
+
 // ! FETCH DATA FOR ONE USER
 
 app.get( '/user/:id', async (req, res) => {
@@ -110,12 +122,8 @@ app.get( '/user/:id', async (req, res) => {
             return res.status(404).send('User not found')
         }
 
-        const userWithBase64Pic = {
-            ...userData.toObject(),
-            profilePicture: userData.profilePicture != null ? userData.profilePicture.toString('base64') : ''
-        };
+        res.send(pic64Handler(userData))
 
-        res.send(JSON.stringify(userWithBase64Pic))
     }catch(error){
         res.send(error)
     }
@@ -133,12 +141,7 @@ app.get( '/user/username/:username', async (req, res) => {
             return res.status(404).send('User not found')
         }
 
-        const userWithBase64Pic = {
-            ...userData.toObject(),
-            profilePicture: userData.profilePicture != null ? userData.profilePicture.toString('base64') : ''
-        };
-
-        res.send(JSON.stringify(userWithBase64Pic))
+        res.send(pic64Handler(userData))
     }catch(error){
         res.send(error)
     }
@@ -207,8 +210,9 @@ app.put('/user/picture/:id', upload.single("profilePicture") , async (req, res) 
 
 app.get('/leaderboard/:count', async (req, res) => {
     try {
-        const leaderboard = await User.find({})
-        res.send(leaderboard.sort((a, b) => b.points - a.points).slice(0, req.params.count))
+        const allUsers = await User.find({})
+        const leaderboard = allUsers.sort((a, b) => b.points - a.points).slice(0, req.params.count)
+        res.send(leaderboard.map(e => pic64Handler(e)))
     } catch (error) {
         res.send(error)
     }

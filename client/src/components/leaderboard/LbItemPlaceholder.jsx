@@ -2,7 +2,7 @@ import React from 'react'
 
 function LbItemPlaceholder({id}) {
   return (
-    <div id={id}>
+    <div key={id}>
 
      loading... 
 

@@ -1,12 +1,12 @@
 
 // ! USER DATA
 
-const handleImage = (data, setImageUrl) => {
+export const handleImage = (data) => {
     if(data.profilePicture != ''){
         const img = `data:image/png;base64,${data.profilePicture}`;
-        setImageUrl(img)
+        return img
     }else{
-        setImageUrl('./src/assets/avatar.png')
+        return './src/assets/avatar.png'
     }
 }
 
@@ -16,7 +16,8 @@ const sendRequest = (url, setUserData, handleImage, setImageUrl) => {
         .then(response => response.json())
         .then((data) => {
             setUserData(data)
-            handleImage(data, setImageUrl)
+            // handleImage(data, setImageUrl)
+            setImageUrl(handleImage(data))
         })
     }catch(error){
         console.log(error)
