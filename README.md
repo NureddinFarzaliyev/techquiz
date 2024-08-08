@@ -10,9 +10,9 @@ This is a **MERN Stack** app to solve different quizes. You can create an accoun
 - 3 levels (easy / medium / hard) for each quiz
 - Level System based on points (Trainee, Junior, Medium, Senior, Expert, Sensei)
 - Shareable User Profile
+- Leaderboard
 
 #### Will be added:
-- Leaderboard
 
 ## Tech Stack:
 <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/TailwindCSS-Dark.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/MongoDB.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/ExpressJS-Dark.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/React-Dark.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/NodeJS-Dark.svg" height="50" width="50" />
