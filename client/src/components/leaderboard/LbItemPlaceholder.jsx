@@ -1,10 +1,21 @@
 import React from 'react'
+import LbPlaceholderItem from './LbPlaceholderItem'
 
 function LbItemPlaceholder({id}) {
+
   return (
     <div key={id}>
 
-     loading... 
+      <LbPlaceholderItem /> 
+      <LbPlaceholderItem /> 
+      <LbPlaceholderItem /> 
+      <LbPlaceholderItem /> 
+      <LbPlaceholderItem /> 
+      <LbPlaceholderItem /> 
+      <LbPlaceholderItem /> 
+      <LbPlaceholderItem /> 
+      <LbPlaceholderItem /> 
+      <LbPlaceholderItem /> 
 
     </div>
   )

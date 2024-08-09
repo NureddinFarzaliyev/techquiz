@@ -51,3 +51,19 @@ export const fetchLeaderboard = (limit, setter) => {
         return error
     }
 }
+
+
+// ! Placeholder loader
+
+import PlaceholderLoading from "react-placeholder-loading";
+
+export const placeholderFactory = (shape) => {
+    return( (width, height) => {
+        return(
+            <div className='rounded-md overflow-hidden w-min'>
+                <PlaceholderLoading  shape={shape} width={width} height={height} colorStart='rgba(255, 255, 255, 0.2)' colorEnd='rgba(255, 255, 255, 0.5)' />
+            </div>
+        )
+    }
+    )
+}

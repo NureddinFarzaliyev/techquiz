@@ -1,20 +1,7 @@
 import React from 'react'
-import PlaceholderLoading from 'react-placeholder-loading'
+import { placeholderFactory } from '../../Utils'
 
 function UserPageProfilePlaceholder() { 
-
-    // Using currying in order to create two different functions to create placeholder items
-
-    const placeholderFactory = (shape) => {
-        return( (width, height) => {
-            return(
-                <div className='rounded-md overflow-hidden w-min'>
-                    <PlaceholderLoading  shape={shape} width={width} height={height} colorStart='rgba(255, 255, 255, 0.2)' colorEnd='rgba(255, 255, 255, 0.5)' />
-                </div>
-            )
-        }
-        )
-    }
 
     const rectPlaceholder = placeholderFactory('rect')
     const circlePlaceholder = placeholderFactory('circle')
