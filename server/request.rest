@@ -33,11 +33,11 @@ Content-Type:  application/json
 #####
 
 # ! ADD POINTS TO USER
-PUT http://localhost:3000/user/66b1c736bf0e838b433acf82
+PUT http://localhost:3000/user/66a881e6281ca9f1452c80b0
 Content-Type: application/json
 
 {
-    "points": 5000
+    "points": 3000
 }
 
 #####

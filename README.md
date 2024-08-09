@@ -12,8 +12,6 @@ This is a **MERN Stack** app to solve different quizes. You can create an accoun
 - Shareable User Profile
 - Leaderboard
 
-#### Will be added:
-
 ## Tech Stack:
 <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/TailwindCSS-Dark.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/MongoDB.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/ExpressJS-Dark.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/React-Dark.svg" height="50" width="50" /> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/NodeJS-Dark.svg" height="50" width="50" />
 
@@ -23,3 +21,17 @@ This is a **MERN Stack** app to solve different quizes. You can create an accoun
 - "**quizapi.io**" **API** to fetch questions 
 - **MongoDB** as a database
 - **Node.js** / **Express** to write REST API to communicate with database and User authentication 
+
+## Some Screenshots:
+
+#### Main Page
+![Main Page](design/main.png)
+
+#### Logged-in Main Page
+![Logged-in Main Page](design/loggedin-main.png)
+
+#### Quiz
+![Quiz Page](design/quiz.png)
+
+#### Profile
+![Profile Page](design/profile-page.png)
